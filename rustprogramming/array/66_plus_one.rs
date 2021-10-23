@@ -25,15 +25,15 @@ impl Solution {
 
 
 fn main() {
-    let digits = vec![1, 2, 3];
+    let digits: Vec<i32> = vec![1, 2, 3];
     println!("{:?}", Solution::plus_one(digits));
 
-    let digits = vec![4, 3, 2, 1];
+    let digits: Vec<i32> = vec![4, 3, 2, 1];
     println!("{:?}", Solution::plus_one(digits));
 
-    let digits = vec![0];
+    let digits: Vec<i32> = vec![0];
     println!("{:?}", Solution::plus_one(digits));
 
-    let digits = vec![9, 9];
+    let digits: Vec<i32> = vec![9, 9];
     println!("{:?}", Solution::plus_one(digits));
 }
