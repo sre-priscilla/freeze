@@ -42,15 +42,27 @@ impl Solution {
 }
 
 fn main() {
-	let node1 = Some(Box::new(ListNode { 
-		val: 1,
-		next: Some(Box::new(ListNode {
-			val: 2,
-			next: Some(Box::new(ListNode {
-				val: 3,
-				next: None,
-			}))
-		}))
-    }));
-    println!("{:?}", Solution::reverse_list(node1));
+	// let node1 = Some(Box::new(ListNode { 
+	// 	val: 1,
+	// 	next: Some(Box::new(ListNode {
+	// 		val: 2,
+	// 		next: Some(Box::new(ListNode {
+	// 			val: 3,
+	// 			next: None,
+	// 		}))
+	// 	}))
+    // }));
+
+	// let mut node1 = Some(Box::new(ListNode::new(1)));
+	// node1.as_mut().unwrap().next = Some(Box::new(ListNode::new(2)));
+	// node1.as_mut().unwrap().next.as_mut().unwrap().next = Some(Box::new(ListNode::new(3)));
+
+	let mut node1 = &mut Some(Box::new(ListNode::new(1)));
+	let mut node2 = &mut Some(Box::new(ListNode::new(2)));
+	let mut node3 = &mut Some(Box::new(ListNode::new(3)));
+	node1.as_mut().unwrap().next = Some(node2.as_ref().unwrap().clone());
+	node2.as_mut().unwrap().next = Some(node3.as_ref().unwrap().clone());
+    println!("{:?}", node1);
+	println!("{:?}", node2);
+	println!("{:?}", node3);
 }
