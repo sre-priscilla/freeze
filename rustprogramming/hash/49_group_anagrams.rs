@@ -21,7 +21,7 @@ impl Solution {
 }
 
 fn main() {
-    let original_strs = vec!["eat", "tea", "tan", "ate", "nat", "bat"];
+    let original_strs: Vec<&str> = vec!["eat", "tea", "tan", "ate", "nat", "bat"];
     let strs: Vec<String> = original_strs.iter().map(|s| String::from(*s)).collect();
     println!("{:?}", Solution::group_anagrams(strs));
 }
