@@ -31,7 +31,7 @@ impl Solution {
 }
 
 fn main() {
-    let node1 = Some(Box::new(ListNode { 
+    let node1 = &Some(Box::new(ListNode { 
 		val: 1,
 		next: Some(Box::new(ListNode {
 			val: 2,
@@ -41,5 +41,14 @@ fn main() {
 			}))
 		}))
     }));
-    println!("{:?}", Solution::middle_node(node1));
+
+    let clone_node1 = &node1.clone();
+
+    println!("{:p} {:p}", node1, clone_node1);
+    println!("{:p} {:p}", &node1.as_ref().unwrap().next, &clone_node1.as_ref().unwrap().next);
+    println!("{:p} {:p}", &node1.as_ref().unwrap().next.as_ref().unwrap().next, &clone_node1.as_ref().unwrap().next.as_ref().unwrap().next);
+
+
+    // println!("{:p}", &node1.as_ref().unwrap().next);
+    // // println!("{}", std::ptr::eq(&Solution::middle_node(node1.clone()), &node1.as_ref().unwrap().next))
 }
