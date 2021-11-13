@@ -13,7 +13,6 @@ class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
         if root is None:
             return []
-
         ret, queue = [], deque([root])
         while len(queue) > 0:
             n, nums = len(queue), []
