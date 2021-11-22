@@ -44,14 +44,13 @@ class Solution:
                 stack.append(curr)
                 curr = curr.left
             curr = stack.pop()
-            if not curr.right:
+            if not curr.right or curr.right == prev:
                 nums.append(curr.val)
-                prev, curr = None, None
+                prev, curr = curr, None
             else:
                 stack.append(curr)
                 curr = curr.right
         return nums
-
 
 
 
