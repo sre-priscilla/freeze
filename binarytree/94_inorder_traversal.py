@@ -13,25 +13,41 @@ class Solution:
     #         return []
     #     return [*self.inorderTraversal(root.left), root.val, *self.inorderTraversal(root.right)]
 
+    # def inorderTraversal(self, root: TreeNode) -> List[int]:
+    #     if not root:
+    #         return []
+    #     stack: List[TreeNode] = []
+
+    #     curr: TreeNode = root
+    #     nums: List[int] = []
+    #     while curr or stack:
+    #         while curr:
+    #             stack.append(curr)
+    #             curr = curr.left
+    #         if stack:
+    #             curr = stack.pop()
+    #             nums.append(curr.val)
+    #             curr = curr.right
+    #     return nums
+
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         if not root:
             return []
-        stack: List[TreeNode] = []
-
-        curr: TreeNode = root
         nums: List[int] = []
+        stack: List[TreeNode] = []
+        curr: TreeNode = root
         while curr or stack:
-            while curr:
+            if curr:
                 stack.append(curr)
                 curr = curr.left
-            if stack:
-                curr = stack.pop()
-                nums.append(curr.val)
-                curr = curr.right
+            else:
+                node: TreeNode = stack.pop()
+                nums.append(node.val)
+                curr = node.right
         return nums
 
 if __name__ == '__main__':
     root = TreeNode(1)
-    root.left = TreeNode(2)
-    root.right = TreeNode(3)
+    root.right = TreeNode(2)
+    root.right.left = TreeNode(3)
     print(Solution().inorderTraversal(root))

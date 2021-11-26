@@ -1,4 +1,5 @@
-from typing import List, Optional
+from collections import deque
+from typing import Deque, List, Optional
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -31,26 +32,40 @@ class Solution:
     #     nums.reverse()
     #     return nums
 
-    def postorderTraversal(self, root: TreeNode) -> List[int]:
-        if not root:
-            return []
-        stack: List[TreeNode] = []
+    # def postorderTraversal(self, root: TreeNode) -> List[int]:
+    #     if not root:
+    #         return []
+    #     stack: List[TreeNode] = []
         
-        prev: Optional[TreeNode] = None
-        curr: Optional[TreeNode] = root
-        nums: List[int] = []
+    #     prev: Optional[TreeNode] = None
+    #     curr: Optional[TreeNode] = root
+    #     nums: List[int] = []
+    #     while curr or stack:
+    #         while curr:
+    #             stack.append(curr)
+    #             curr = curr.left
+    #         curr = stack.pop()
+    #         if not curr.right or curr.right == prev:
+    #             nums.append(curr.val)
+    #             prev, curr = curr, None
+    #         else:
+    #             stack.append(curr)
+    #             curr = curr.right
+    #     return nums
+
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        ret: Deque[int] = deque()
+        stack: List[TreeNode] = []
+        curr: TreeNode = root
         while curr or stack:
-            while curr:
+            if curr:
                 stack.append(curr)
-                curr = curr.left
-            curr = stack.pop()
-            if not curr.right or curr.right == prev:
-                nums.append(curr.val)
-                prev, curr = curr, None
-            else:
-                stack.append(curr)
+                ret.appendleft(curr.val)
                 curr = curr.right
-        return nums
+            else:
+                node: TreeNode = stack.pop()
+                curr = node.left
+        return list(ret)
 
 
 
