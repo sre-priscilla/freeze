@@ -1,7 +1,0 @@
-*
-!*/
-!*.rs
-!*.py
-!*.cc
-!.gitignore
-!.devcontainer
